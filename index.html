@@ -3,159 +3,175 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Explainer Disagreement and Trust Calibration in Explainable AI for IoT Security</title>
+<title>PBL Presentation | 2026</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
-body {
-    background-color: #020617;
-    color: #f8fafc;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-}
-.glass {
-    background: rgba(255,255,255,0.03);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255,255,255,0.1);
-}
-.gradient-text {
-    background: linear-gradient(90deg,#60a5fa,#a855f7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+body { background-color:#020617;color:#f8fafc;font-family:'Plus Jakarta Sans',sans-serif;scroll-behavior:smooth;}
+.glass { background:rgba(255,255,255,0.03);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,0.1);}
+.gradient-text { background:linear-gradient(90deg,#60a5fa,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+
+#timerContainer { background:#fff;color:#020617;border:3px solid #3b82f6; }
 </style>
 </head>
 
-<body>
+<body onload="startTimer()">
 
-<!-- NAVBAR -->
+<div id="timerContainer" class="fixed bottom-10 right-10 px-8 py-4 rounded-3xl flex items-center gap-4">
+<i class="fas fa-hourglass-start text-blue-600 text-2xl" id="timerIcon"></i>
+<span id="displayTime" class="text-4xl font-black font-mono">00:00</span>
+</div>
+
 <nav class="fixed w-full z-50 glass px-8 py-4 flex justify-between">
-    <span class="font-black">PBL 2026</span>
+<span class="font-black">PBL 2026</span>
 </nav>
 
-<main class="max-w-6xl mx-auto px-6 pt-32 space-y-24">
+<main class="max-w-6xl mx-auto px-6 pt-48 pb-32 space-y-32">
 
 <!-- HERO -->
 <section class="text-center">
-<h1 class="text-5xl font-extrabold mb-6">
-<span class="gradient-text">Explainable AI for IoT Security</span>
+<div class="inline-block px-4 py-1 border border-slate-800 rounded-full text-slate-500 text-[10px] font-mono mb-6 uppercase">
+ID: 2427030373
+</div>
+
+<h1 class="text-6xl font-extrabold mb-8 uppercase">
+<span class="gradient-text">
+Explainable AI for IoT Security using Disagreement Analysis
+</span>
 </h1>
 
-<p class="text-slate-400 max-w-3xl mx-auto">
-This project builds an intelligent intrusion detection system and evaluates
-the reliability of AI explanations using a novel disagreement analyzer.
+<p class="text-slate-400 max-w-2xl mx-auto italic text-lg border-l-2 border-blue-500 pl-6 text-left">
+An AI-based intrusion detection system that detects attacks and evaluates the reliability of explanations using LIME and SHAP disagreement analysis.
 </p>
 </section>
 
 <!-- PROBLEM -->
-<section class="glass p-10 rounded-3xl">
-<h2 class="text-3xl font-bold mb-4">Problem Statement</h2>
+<section id="problem" class="grid md:grid-cols-2 gap-12">
+<div class="glass p-10 rounded-3xl border-l-4 border-blue-600">
+<h2 class="text-3xl font-extrabold mb-6">Problem Statement</h2>
 <p class="text-slate-400">
-Traditional IoT systems rely on static authentication and lack trust validation.
-Even highly accurate AI models may produce inconsistent explanations.
-This research focuses on measuring and improving explanation reliability.
+Traditional IoT systems cannot adapt to evolving cyber threats. Even accurate AI models lack explanation reliability, creating trust issues in security decisions.
 </p>
+</div>
+
+<div class="space-y-6">
+<div class="glass p-7 rounded-3xl border-r-4 border-blue-500/50">
+<h3 class="text-blue-400 font-bold text-xs mb-2">Literature Review</h3>
+<p class="text-sm text-slate-500 italic">
+Existing research focuses on improving accuracy but ignores explainability consistency.
+</p>
+</div>
+
+<div class="glass p-7 rounded-3xl border-r-4 border-purple-500/50">
+<h3 class="text-purple-400 font-bold text-xs mb-2">Research Gap</h3>
+<p class="text-sm text-slate-500 italic">
+No system evaluates disagreement between explainability methods like LIME and SHAP.
+</p>
+</div>
+</div>
 </section>
 
 <!-- METHODOLOGY -->
-<section>
-<h2 class="text-3xl font-bold text-center mb-10">Methodology</h2>
+<section id="methodology">
+<h2 class="text-4xl text-center font-black mb-10">System Methodology</h2>
 
-<div class="grid md:grid-cols-4 gap-6">
+<div class="grid md:grid-cols-3 gap-8">
 
-<div class="glass p-6 rounded-xl text-center">
-<i class="fas fa-database text-blue-400 text-2xl mb-2"></i>
-<p>Data preprocessing (225K+ samples)</p>
+<div class="glass p-8 text-center">
+<i class="fas fa-database text-blue-500 text-3xl mb-4"></i>
+<h3 class="font-bold text-xs uppercase mb-2">Dataset</h3>
+<p class="text-sm text-slate-500">
+225K+ IoT samples, 78 features, cleaned and normalized.
+</p>
 </div>
 
-<div class="glass p-6 rounded-xl text-center">
-<i class="fas fa-brain text-purple-400 text-2xl mb-2"></i>
-<p>Random Forest model</p>
+<div class="glass p-8 text-center">
+<i class="fas fa-microchip text-purple-500 text-3xl mb-4"></i>
+<h3 class="font-bold text-xs uppercase mb-2">Model</h3>
+<p class="text-sm text-slate-500">
+Random Forest classifier for DDoS detection.
+</p>
 </div>
 
-<div class="glass p-6 rounded-xl text-center">
-<i class="fas fa-lightbulb text-yellow-400 text-2xl mb-2"></i>
-<p>LIME & SHAP explanations</p>
-</div>
-
-<div class="glass p-6 rounded-xl text-center">
-<i class="fas fa-chart-line text-green-400 text-2xl mb-2"></i>
-<p>Disagreement Analyzer</p>
+<div class="glass p-8 text-center border-2 border-green-500/20 bg-green-500/5">
+<i class="fab fa-python text-green-500 text-3xl mb-4"></i>
+<h3 class="font-bold text-xs uppercase text-green-400">Execution</h3>
+<p class="text-sm text-slate-500">
+LIME + SHAP + Disagreement Analyzer
+</p>
 </div>
 
 </div>
 </section>
 
 <!-- RESULTS -->
-<section class="glass p-10 rounded-3xl">
-<h2 class="text-3xl font-bold mb-10 text-center">Results</h2>
+<section id="results" class="glass p-12 rounded-3xl border-t-4 border-blue-500">
+<h2 class="text-3xl text-center font-black mb-10">Results & Analysis</h2>
 
-<div class="grid md:grid-cols-2 gap-10">
+<div class="grid md:grid-cols-2 gap-16 items-center">
 
-<div class="space-y-4">
+<canvas id="resultsChart"></canvas>
 
-<div class="p-4 bg-white/5 rounded-xl flex justify-between">
+<div>
+<div class="p-6 bg-white/5 rounded-xl flex justify-between">
 <span>Accuracy</span>
-<span class="text-blue-400">0.9999</span>
+<span class="text-blue-400 text-2xl font-bold">99.99%</span>
 </div>
 
-<div class="p-4 bg-white/5 rounded-xl flex justify-between">
-<span>Agreement</span>
-<span class="text-green-400">0.3617</span>
-</div>
-
-<div class="p-4 bg-white/5 rounded-xl flex justify-between">
-<span>Disagreement</span>
-<span class="text-red-400">0.6383</span>
-</div>
-
-</div>
-
-<canvas id="chart"></canvas>
-
-</div>
-
-<p class="mt-6 text-slate-400 text-sm">
-Despite very high accuracy, explainability analysis shows high disagreement.
-This proves that accuracy alone is not enough — trust evaluation is essential.
+<p class="text-slate-500 text-sm mt-4 italic">
+Agreement = 0.3617 | Disagreement = 0.6383
+<br>
+High accuracy but high disagreement shows explanation reliability issues.
 </p>
+</div>
 
-</section>
-
-<!-- CONTRIBUTION -->
-<section class="text-center">
-<h2 class="text-3xl font-bold mb-6">Key Contribution</h2>
-
-<p class="text-slate-400 max-w-3xl mx-auto">
-A novel disagreement analyzer compares LIME and SHAP explanations using:
-<br><br>
-Overlap + Rank Correlation + Cosine Similarity
-<br><br>
-Final Similarity = (Overlap + Rank + Cosine) / 3<br>
-Disagreement = 1 − Similarity
-</p>
-
+</div>
 </section>
 
 <!-- TEAM -->
-<section class="text-center">
-<h3 class="text-xl font-bold">Deeksha Biyani</h3>
-<p class="text-slate-500">Manipal University Jaipur</p>
+<section id="team" class="text-center pt-10">
+<h2 class="text-xs text-slate-500 mb-10 uppercase">Academic Credits</h2>
+
+<div class="flex justify-center gap-10">
+
+<div class="glass p-6">
+<p class="text-blue-400 text-xs">Project Guide</p>
+<p class="text-xl font-bold">Dr. Usha Jain</p>
+</div>
+
+<div class="glass p-6">
+<p class="text-slate-400 text-xs">Student</p>
+<p class="text-xl font-bold">Deeksha Biyani</p>
+<p class="text-sm text-slate-500">2427030373</p>
+</div>
+
+</div>
 </section>
 
 </main>
 
 <script>
-new Chart(document.getElementById('chart'), {
-    type: 'bar',
-    data: {
-        labels: ['Accuracy','Agreement','Disagreement'],
-        datasets: [{
-            data: [0.9999,0.3617,0.6383]
-        }]
-    }
+let sec=0;
+function startTimer(){
+setInterval(()=>{
+sec++;
+let m=Math.floor(sec/60);
+let s=sec%60;
+document.getElementById('displayTime').innerText=
+`${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+},1000);
+}
+
+new Chart(document.getElementById('resultsChart'),{
+type:'bar',
+data:{
+labels:['Agreement','Disagreement'],
+datasets:[{data:[0.3617,0.6383]}]
+}
 });
 </script>
 
